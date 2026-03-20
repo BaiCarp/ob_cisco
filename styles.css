@@ -1,0 +1,166 @@
+/* Cisco Code Highlighter - Main Styles */
+
+/* Code block container */
+.cisco-block {
+    font-family: var(--font-monospace);
+    font-size: var(--font-smallest);
+    line-height: var(--line-height-normal);
+    background-color: var(--code-background);
+    border-radius: var(--radius-s);
+    padding: var(--size-4-4);
+    margin: var(--size-4-4) 0;
+    border-left: 4px solid var(--interactive-accent);
+    overflow-x: auto;
+    white-space: pre-wrap;
+    word-break: break-word;
+    position: relative;
+}
+
+/* Line numbers mode */
+.cisco-block.has-line-numbers .cisco-line {
+    display: flex;
+    gap: var(--size-4-2);
+}
+
+.cisco-block.has-line-numbers .line-number {
+    color: var(--text-muted);
+    user-select: none;
+    text-align: right;
+    min-width: 3em;
+    border-right: 1px solid var(--background-modifier-border);
+    padding-right: var(--size-4-2);
+    font-size: 0.9em;
+}
+
+.cisco-block.has-line-numbers .cisco-content {
+    flex: 1;
+}
+
+/* Line styling */
+.cisco-line {
+    display: block;
+    min-height: 1.5em;
+    transition: background-color 0.1s ease;
+}
+
+.cisco-line:hover {
+    background-color: var(--background-modifier-hover);
+}
+
+/* Color classes - values injected by JS */
+.cisco-prompt {
+    color: var(--cisco-prompt, #008080);
+    font-weight: var(--bold-weight);
+}
+
+.cisco-command {
+    color: var(--cisco-command, #ff8c00);
+}
+
+.cisco-interface {
+    color: var(--cisco-interface, #003153);
+    font-weight: 500;
+}
+
+.cisco-ip {
+    color: var(--cisco-ip, #656598);
+    text-decoration: underline dotted;
+}
+
+.cisco-number {
+    color: var(--cisco-number, #aa78aa);
+}
+
+.cisco-comment {
+    color: var(--cisco-comment, #6a9955);
+    font-style: italic;
+}
+
+.cisco-file {
+    color: var(--cisco-file, #ff69b4);
+    font-style: italic;
+}
+
+.cisco-text {
+    color: var(--cisco-text, var(--text-normal));
+}
+
+/* Error state */
+.cisco-block-error {
+    color: var(--text-error);
+    background-color: var(--background-modifier-error);
+    padding: var(--size-4-2);
+    border-radius: var(--radius-s);
+    font-family: var(--font-monospace);
+    margin: var(--size-4-2) 0;
+}
+
+/* Settings panel styles */
+.cisco-keyword-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--size-4-1);
+    margin: var(--size-4-2) 0 var(--size-4-4) 0;
+}
+
+.cisco-keyword-tag {
+    background-color: var(--background-modifier-hover);
+    padding: 2px var(--size-4-2);
+    border-radius: var(--radius-l);
+    font-size: var(--font-small);
+    display: inline-flex;
+    align-items: center;
+    gap: var(--size-4-1);
+}
+
+.cisco-keyword-tag button {
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-size: var(--font-ui-large);
+    padding: 0 var(--size-4-1);
+    line-height: 1;
+}
+
+.cisco-keyword-tag button:hover {
+    color: var(--text-error);
+}
+
+/* Animation for new lines */
+@keyframes ciscoFadeIn {
+    from {
+        opacity: 0.5;
+        transform: translateY(-2px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.cisco-line {
+    animation: ciscoFadeIn 0.2s ease-out;
+}
+
+/* Print styles */
+@media print {
+    .cisco-block {
+        background: none !important;
+        border-left: 2px solid black !important;
+        box-shadow: none !important;
+    }
+    
+    .cisco-block .line-number {
+        color: #666 !important;
+        border-right-color: #ccc !important;
+    }
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+    .cisco-block {
+        font-size: 12px;
+        padding: var(--size-4-2);
+    }
+}
